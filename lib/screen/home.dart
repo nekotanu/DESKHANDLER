@@ -8,6 +8,19 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // return SfCalendar(view: CalendarView.month);
-    return Scaffold(body: Dhcalender());
+    return Scaffold(
+        body: Column(
+      children: [
+        ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Dhcalender(),
+                  ));
+            },
+            child: Text('calender'))
+      ],
+    ));
   }
 }
