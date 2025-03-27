@@ -2,12 +2,29 @@ import 'package:calander/components/dhcalender.dart';
 import 'package:flutter/material.dart';
 // import 'package:syncfusion_flutter_calendar/calendar.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({super.key});
 
   @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  @override
   Widget build(BuildContext context) {
-    // return SfCalendar(view: CalendarView.month);
+    TextEditingController addtask = TextEditingController();
+    Future<dynamic> addTask() {
+      return showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text('Add task'),
+          content: TextField(
+            controller: addtask,
+          ),
+        ),
+      );
+    }
+
     return Scaffold(
         body: Column(
       children: [
@@ -19,7 +36,16 @@ class Home extends StatelessWidget {
                     builder: (context) => Dhcalender(),
                   ));
             },
-            child: Text('calender'))
+            child: Text('calender')),
+        BottomAppBar(
+          child: IconButton(
+              onPressed: () {
+                TextField(
+                  controller: addtask,
+                );
+              },
+              icon: Icon(Icons.add)),
+        )
       ],
     ));
   }
