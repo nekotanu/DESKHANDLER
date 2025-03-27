@@ -1,3 +1,4 @@
+import 'package:calander/screen/dashboard.dart';
 import 'package:calander/screen/home.dart';
 import 'package:flutter/material.dart';
 
@@ -10,6 +11,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: Home());
+    return MaterialApp(debugShowCheckedModeBanner: false, home: Dashboard());
   }
 }

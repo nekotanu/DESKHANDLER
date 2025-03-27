@@ -8,23 +8,12 @@ class ToDo extends StatefulWidget {
 }
 
 class _ToDoState extends State<ToDo> {
-  TextEditingController addtask = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black26,
       body: Column(
-        children: [
-          BottomAppBar(
-            child: IconButton(
-                onPressed: () {
-                  TextField(
-                    controller: addtask,
-                  );
-                },
-                icon: Icon(Icons.add)),
-          )
-        ],
+        children: [],
       ),
     );
   }

@@ -1,6 +1,5 @@
 import 'package:calander/components/dhcalender.dart';
 import 'package:flutter/material.dart';
-// import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -10,43 +9,69 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  @override
-  Widget build(BuildContext context) {
-    TextEditingController addtask = TextEditingController();
-    Future<dynamic> addTask() {
-      return showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: Text('Add task'),
-          content: TextField(
-            controller: addtask,
-          ),
-        ),
+  List<String> tasks = [];
+  TextEditingController addtask = TextEditingController();
+
+  void addTask() {
+    if (addtask.text.isNotEmpty) {
+      setState(() {
+        tasks.add(addtask.text);
+        addtask.clear();
+      });
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Please enter a task')),
       );
     }
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
-        body: Column(
-      children: [
-        ElevatedButton(
+      body: Column(
+        children: [
+          ElevatedButton(
             onPressed: () {
               Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => Dhcalender(),
-                  ));
+                context,
+                MaterialPageRoute(builder: (context) => Dhcalender()),
+              );
             },
-            child: Text('calender')),
-        BottomAppBar(
-          child: IconButton(
-              onPressed: () {
-                TextField(
-                  controller: addtask,
+            child: Text('Calendar'),
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: tasks.length,
+              itemBuilder: (context, index) {
+                return ListTile(
+                  title: Text(tasks[index]),
+                  dense: true,
                 );
               },
-              icon: Icon(Icons.add)),
-        )
-      ],
-    ));
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    controller: addtask,
+                    decoration: InputDecoration(
+                      hintText: "Enter a task",
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+                ),
+                IconButton(
+                  onPressed: addTask,
+                  icon: Icon(Icons.add, color: Colors.blue),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
