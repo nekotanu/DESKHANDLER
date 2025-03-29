@@ -1,13 +1,12 @@
 import 'package:calander/components/dhcalender.dart';
 import 'package:calander/components/to_do.dart';
+import 'package:calander/main.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const Dashboard());
-}
-
 class Dashboard extends StatefulWidget {
-  const Dashboard({super.key});
+  const Dashboard({super.key, required this.days});
+
+  final List<String> days;
 
   @override
   _DashboardState createState() => _DashboardState();
@@ -17,10 +16,7 @@ class _DashboardState extends State<Dashboard> {
   int selectedIndex = 0;
 
   // List of pages to navigate to
-  final List<Widget> pages = [
-    Dhcalender(),
-    ToDo(),
-  ];
+  final List<Widget> pages = [Dhcalender(days: days), ToDo()];
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +44,8 @@ class _DashboardState extends State<Dashboard> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => pages[index]),
+                              builder: (context) => pages[index],
+                            ),
                           );
                         },
                         child: CircleAvatar(
@@ -67,11 +64,7 @@ class _DashboardState extends State<Dashboard> {
               ),
             ),
             // Vertical Divider
-            const VerticalDivider(
-              width: 1,
-              thickness: 1,
-              color: Colors.white,
-            ),
+            const VerticalDivider(width: 1, thickness: 1, color: Colors.white),
             // Main Content
             Expanded(
               flex: 5,

@@ -12,6 +12,8 @@ class _HomeState extends State<Home> {
   List<String> tasks = [];
   TextEditingController addtask = TextEditingController();
 
+  List<String> days = ["sun", "mon", "tue", "wed", "thus", "fri", "sat"];
+
   void addTask() {
     if (addtask.text.isNotEmpty) {
       setState(() {
@@ -19,9 +21,9 @@ class _HomeState extends State<Home> {
         addtask.clear();
       });
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Please enter a task')),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('Please enter a task')));
     }
   }
 
@@ -34,7 +36,7 @@ class _HomeState extends State<Home> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Dhcalender()),
+                MaterialPageRoute(builder: (context) => Dhcalender(days: days)),
               );
             },
             child: Text('Calendar'),
@@ -43,10 +45,7 @@ class _HomeState extends State<Home> {
             child: ListView.builder(
               itemCount: tasks.length,
               itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(tasks[index]),
-                  dense: true,
-                );
+                return ListTile(title: Text(tasks[index]), dense: true);
               },
             ),
           ),

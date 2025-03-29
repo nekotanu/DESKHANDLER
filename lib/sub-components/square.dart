@@ -8,11 +8,13 @@ class Square extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 100,
+      width: 100,
       decoration: BoxDecoration(
-        // borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(2),
         border: Border.all(),
       ),
-      child: SizedBox(height: 200, width: 200, child: Text(count)),
+      child: SizedBox(height: 50, width: 50, child: Text(count)),
     );
   }
 }
