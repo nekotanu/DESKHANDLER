@@ -21,6 +21,7 @@ class _DhcalenderState extends State<Dhcalender> {
         child: Column(
           children: [
             GridView.builder(
+              physics: NeverScrollableScrollPhysics(),
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 7,
                 childAspectRatio: 4.1,
@@ -30,6 +31,7 @@ class _DhcalenderState extends State<Dhcalender> {
               itemBuilder: (context, index) => Dhtab(text: widget.days[index]),
             ),
             GridView.builder(
+              physics: NeverScrollableScrollPhysics(),
               itemCount: 7 * 6,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 7,

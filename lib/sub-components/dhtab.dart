@@ -8,10 +8,12 @@ class Dhtab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 50,
-      height: 10,
-      decoration: BoxDecoration(border: Border.all()),
-      child: Text(text),
+      height: 40,
+      decoration: BoxDecoration(
+        border: Border.all(),
+        borderRadius: BorderRadius.circular(2),
+      ),
+      child: Text(text, style: TextStyle(fontSize: 16)),
     );
   }
 }

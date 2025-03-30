@@ -14,7 +14,7 @@ class Square extends StatelessWidget {
         borderRadius: BorderRadius.circular(2),
         border: Border.all(),
       ),
-      child: SizedBox(height: 50, width: 50, child: Text(count)),
+      child: Padding(padding: EdgeInsets.all(2), child: Text(count)),
     );
   }
 }
