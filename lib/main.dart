@@ -1,5 +1,4 @@
 import 'package:calander/screen/dashboard.dart';
-// import 'package:calander/screen/home.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -16,7 +15,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Dashboard(days: days),
+      home: Scaffold(body: Dashboard(days: days)),
     );
   }
 }
+
+
+//DATA
+//NAVBAR ??
+

@@ -1,14 +1,14 @@
 import 'package:calander/components/dhcalender.dart';
 import 'package:flutter/material.dart';
 
-class Home extends StatefulWidget {
-  const Home({super.key});
+class Editmode extends StatefulWidget {
+  const Editmode({super.key});
 
   @override
-  State<Home> createState() => _HomeState();
+  State<Editmode> createState() => _EditmodeState();
 }
 
-class _HomeState extends State<Home> {
+class _EditmodeState extends State<Editmode> {
   List<String> tasks = [];
   TextEditingController addtask = TextEditingController();
 
